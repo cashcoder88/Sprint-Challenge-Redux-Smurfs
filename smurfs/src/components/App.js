@@ -9,13 +9,25 @@ import { getSmurfs, postSmurfs } from '../actions';
  `How do I ensure that my component links the state to props?`
  */
 class App extends Component {
+
+  componentDidMount() {
+    this.props.getSmurfs();
+  }
   render() {
+    if (this.props.fetchingSmurfs) {
+      <h1>CURRENTLY FETCHING YOUR DATA, PATIENCE IS KEY</h1>
+    }
     return (
       <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+        {this.props.smurfs.map(smurf => {
+           return (
+             <div>
+              <h1>Name: {smurf.name}</h1>
+              <h3>Age: {smurf.age}</h3>
+              <h3>Height: {smurf.height}</h3>
+             </div>
+           );
+        })}
       </div>
     );
   }
