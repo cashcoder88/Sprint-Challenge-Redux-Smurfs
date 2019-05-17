@@ -8,32 +8,28 @@ import { getSmurfs, postSmurfs } from '../actions';
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
-const smurfObject = {
-  name: "",
-  height: null,
-  age: null
-}
+
 
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      name: "",
+      height: null,
+      age: null
+    }
   }
 
-  //Tried to figure out a way to handle each item in one function, didn't work, ideas?
-  // handleInput = e => {
-  //   if (name) {
-  //     return smurfObject.name= e.target.value
-  //   }
-  //   if (height) {
-  //     return smurfObject.height = e.target.value;
-  //   }
-  //   if (age) {
-  //     return smurfObject.age = e.target.value;
-  //   }
-  // }
-
-  
-  handleName = e => {
+/*   
+I had this before refactoring to state. 
+It made more sense to use state so that I would 
+only need one handleChanges function as opposed to three.
+  const smurfObject = {
+    name: "",
+    height: null,
+    age: null
+  }
+    handleName = e => {
     smurfObject.name = e.target.value;
   }
 
@@ -44,13 +40,22 @@ class App extends Component {
   handleAge = e => {
     smurfObject.age = e.target.value
 }
+ addNewSmurf = () => {
+    this.props.postSmurfs({name: smurfObject.name, age: smurfObject.age, height: smurfObject.height });
+  }
+  onChange={this.handleName}, handleAge, handleHeight
+ */
+  handleChanges = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
 
   componentDidMount() {
     this.props.getSmurfs();
   }
 
   addNewSmurf = () => {
-    this.props.postSmurfs({name: smurfObject.name, age: smurfObject.age, height: smurfObject.height });
+    this.props.postSmurfs({name: this.state.name, age: this.state.age, height: this.state.height });
   }
 
 
@@ -66,17 +71,17 @@ class App extends Component {
         <div className="SmurfForm">
             <form onSubmit={this.addNewSmurf}>
               <input
-                onChange={this.handleName}
+                onChange={this.handleChanges}
                 placeholder="name"
                 name="name"
               />
               <input
-                onChange={this.handleAge}
+                onChange={this.handleChanges}
                 placeholder="age"
                 name="age"
               />
               <input
-                onChange={this.handleHeight}
+                onChange={this.handleChanges}
                 placeholder="height"
                 name="height"
               />
