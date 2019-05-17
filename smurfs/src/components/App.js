@@ -74,25 +74,28 @@ only need one handleChanges function as opposed to three.
                 onChange={this.handleChanges}
                 placeholder="name"
                 name="name"
+                className="input"
               />
               <input
                 onChange={this.handleChanges}
                 placeholder="age"
                 name="age"
+                className="input"
               />
               <input
                 onChange={this.handleChanges}
                 placeholder="height"
                 name="height"
+                className="input"
               />
-              <button onClick={this.addNewSmurf} type="submit">Add to the village</button>
+              <button onClick={this.addNewSmurf} type="submit" className='btn'>Add to the village</button>
             </form>
         </div>
         <div className="Smurf">
         {this.props.smurfs.map(smurf => {
            return (
              <div key={smurf.id}>
-              <h1>Name: {smurf.name}</h1>
+              <h1 className='name'>Name: {smurf.name}</h1>
               <h3>Age: {smurf.age}</h3>
               <h3>Height: {smurf.height}</h3>
              </div>
