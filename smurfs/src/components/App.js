@@ -69,6 +69,7 @@ only need one handleChanges function as opposed to three.
     return (
       <div className="App">
         <div className="SmurfForm">
+            <h1 className='title'>ADD A SMURF</h1>
             <form onSubmit={this.addNewSmurf}>
               <input
                 onChange={this.handleChanges}

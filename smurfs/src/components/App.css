@@ -30,6 +30,11 @@
   margin: 5px;
   border-radius: 10px;
 }
+.title {
+  margin: 0;
+  padding: 10px;
+  color: #4B130E;
+}
 
 .btn {
   background-color: #4B130E;
