@@ -18,8 +18,16 @@ export const ADDING_SMURFS_FAILURE = 'ADDING_SMURFS_FAILURE';
    and 2 more for the stretch problem.
    Be sure to include action types for each type of action creator. Also, be sure to mind
      the "pending" states like, fetching, creating, updating and deleting.
-   C - addSmurf
-   R - getSmurfs
-   U - updateSmurf
-   D - deleteSmurf
+   C - addSmurf => getSmurfs
+   R - getSmurfs => postSmurfs
+  //  U - updateSmurf //
+  //  D - deleteSmurf //
 */
+
+export const getSmurfs = () => dispatch => {
+
+}
+
+export const postSmurfs = () => dispatch => {
+
+}
