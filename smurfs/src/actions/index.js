@@ -26,30 +26,27 @@ export const ADDING_SMURFS_FAILURE = 'ADDING_SMURFS_FAILURE';
 
 export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCHING_SMURFS});
-  const request = axios.get('http://localhost:3333/smurfs');
-  request.then(({ data }) => {
-    console.log(data);
-    dispatch({type: FETCHING_SMURFS_SUCCESS, payload: data  })
+  const requestGet = axios.get('http://localhost:3333/smurfs');
+  requestGet.then((res) => {
+    console.log(res);
+    dispatch({type: FETCHING_SMURFS_SUCCESS, payload: res.data  })
   })
   .catch(err => {
     console.log(err);
-    dispatch({type: FETCHING_SMURFS_FAILURE, payload: err.response})
+    dispatch({type: FETCHING_SMURFS_FAILURE})
   })
 }
 
-// export const getChars = () => dispatch => {
-//   dispatch({ type: FETCHING_DATA });
-//   const request = axios.get('https://swapi.co/api/people/');
-//   request.then(({ data }) => {
-//       console.log(data);
-//       dispatch({type: SUCCESS_DATA, payload: data.results})
-//   })
-//   .catch(err => {
-//       console.log(err);
-//       dispatch({type: FAILURE_DATA, payload: err.response})
-//   })
-// }
 
-export const postSmurfs = () => dispatch => {
-
+export const postSmurfs = (smurf) => dispatch => {
+  dispatch({type: ADDING_SMURFS})
+  const requestPost = axios.post('http://localhost:3333/smurfs', smurf)
+  requestPost.then((res) => {
+    console.log(res);
+    dispatch({type: ADDING_SMURFS_SUCCESS, payload: res.data})
+  })
+  .catch(err => {
+    console.log(err);
+    dispatch({type: ADDING_SMURFS_FAILURE})
+  })
 }

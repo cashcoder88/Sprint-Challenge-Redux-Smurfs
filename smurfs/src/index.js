@@ -10,10 +10,6 @@ import { rootReducer } from './reducers';
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
-// const store = createStore(
-//   () => {}, // this is the most basic reducer. A function that returns and object. Replace it.
-//   applyMiddleware(thunk, logger)
-// );
 
 ReactDOM.render(
   <Provider store={store}>
